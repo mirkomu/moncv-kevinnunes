@@ -78,7 +78,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".progress").ready(function() {
+    $('.progress').ready(function() {
         bar.animate(1.0); // Number from 0.0 t
     });
 });
