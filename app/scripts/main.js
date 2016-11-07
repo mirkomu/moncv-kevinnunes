@@ -1,69 +1,57 @@
 $(document).ready(function() {
-    $('ul li').eq(1).click(function() {
+    $('ul li a').smoothScroll();
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Objectif'
-        });
-        return false;
-    });
-    $('ul li').eq(2).click(function() {
+    /* var bar = new ProgressBar.Circle(container, {
+         color: '#FFEA82',
+         trailColor: '#eee',
+         trailWidth: 1,
+         duration: 1400,
+         easing: 'bounce',
+         strokeWidth: 6,
+         from: { color: '#FFEA82', a: 0 },
+         to: { color: '#ED6A5A', a: 1 },
+         // Set default step function for all animate calls
+         step: function(state, circle) {
+             circle.path.setAttribute('stroke', state.color);
+         }
+     });
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Formations'
-        });
-        return false;
-    });
-    $('ul li').eq(3).click(function() {
+     $(".progress").ap(function() {
+         bar.animate(1.0); // Number from 0.0 t
+     });*/
+    var listProgressBar = $('.progress-bar');
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Experiences'
-        });
-        return false;
-    });
-    $('ul li').eq(4).click(function() {
+    function replaceProgressBarWithChart(progressBar) {
+        var valeur = progressBar.attr('aria-valuenow');
+        var canvas = $('<canvas></canvas>');
+        progressBar.parent().replaceWith(canvas);
+        var myChart = new Chart(canvas, {
+            type: 'doughnut',
+            data: {
+                labels: [
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Langues'
-        });
-        return false;
-    });
-    $('ul li').eq(5).click(function() {
+                ],
+                datasets: [{
+                    data: [valeur, 100 - valeur],
+                    backgroundColor: [
+                        'blue'
+                    ]
+                }]
+            },
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Informatique'
         });
-        return false;
-    });
-    $('ul li').eq(6).click(function() {
 
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#Loisirs'
-        });
-        return false;
-    });
-    $('ul li').eq(7).click(function() {
-
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#References'
-        });
-        return false;
-    });
-    $('a[href*="#hautdepage"]').click(function() {
-
-        'use strict';
-        $.smoothScroll({
-            scrollTarget: '#hautdepage'
-        });
-        return false;
-    });
-    var bar = new ProgressBar.Circle(container, {
+        //graphe à créer
+    };
+    /* for (var i = 0; i < $(".progress-bar").length; i++) {*/
+    // $(".progress-bar").eq(i).attr('aria-valuenow');
+    //utiliser parsint pour tranformer la chaine de caractères aria-valueno
+    for (var i = 0; i < listProgressBar.length; i++) {
+        replaceProgressBarWithChart(listProgressBar.eq(i));
+    }
+    // };
+    //listProgressBar.each(replaceProgressBarWithChart);
+    /*var bar = new ProgressBar.Circle(valeur, {
         color: '#FFEA82',
         trailColor: '#eee',
         trailWidth: 1,
@@ -78,7 +66,31 @@ $(document).ready(function() {
         }
     });
 
-    $('.progress').ready(function() {
-        bar.animate(1.0); // Number from 0.0 t
-    });
+    bar.animate(1.0);*/
+    /*$(".progress-bar").append(function() {
+        var myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: options
+        });
+    });*/
+    /*var chart = new CanvasJS.Chart("progress-bar",
+	{
+		    
+                animationEnabled: true,     
+		data: [
+		{        
+			type: "doughnut",
+			startAngle: 60,                          
+							
+			showInLegend: true,
+			dataPoints: [
+				{y: 65899660},
+				{y: 60929152 }			
+			]
+		}
+		]
+	});
+	chart.render();
+	}*/
 });
