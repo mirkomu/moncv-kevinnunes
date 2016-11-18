@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('ul li a').smoothScroll();
+    $('#hautdepage a').smoothScroll();
     $('div.popup').magnificPopup({ delegate: 'a', type: 'image' });
 
     var listProgressBar = $('.progress-bar');
